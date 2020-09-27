@@ -1,0 +1,79 @@
+/*-------------------------------------------------
+   VARIABLES: choose the colors of your banner
+-------------------------------------------------*/
+
+$main-color: $quaternary;
+$background-color: $header_background;
+
+/*-------------------------------------------------
+   SECTION:  BOXES
+-------------------------------------------------*/
+
+.section-header {
+    padding-bottom: 20px;
+    h2 {
+        margin-bottom: 20px;
+    }
+}
+
+.banner-box {
+    margin-bottom: 5px;
+    margin-top:5px;
+    background-image: url("");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: $background-color; /* to be sure that even if the image above will not be loaded there will be at least a colored background */
+}
+
+.x-title {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    text-align: left;
+    color: $main-color;
+}
+
+.description p {
+    margin-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: left;
+    color:$main-color;
+}
+
+.banner-box .single-box {
+    padding-bottom: 20px;
+        .x-icon {
+        font-size: 70px;
+    }
+}
+
+//TEXT ALIGNMENT INSIDE BUTTONS
+
+#my-button {
+    text-align: left;
+    padding-bottom: 5px;
+    padding-left:15px;
+}
+
+//IMAGE SIZE AS ICON SIZE
+
+.responsive-img {
+    border-style: none;
+    border-width: 1px;
+    height: 70px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+//CLOSE BUTTON ON THE TOP RIGHT
+.banner-box .close {
+    border: none;
+    background: transparent;
+    padding-top: 5px;
+    float: right;
+    color: $main-color;
+}
