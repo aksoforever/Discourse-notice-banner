@@ -1,9 +1,82 @@
 <script type="text/discourse-plugin" version="0.8">
-window.onload = function(){
-    document.getElementById('close').onclick = function(){
-        this.parentNode.parentNode
-        .removeChild(this.parentNode);
-        return false;
+    window.onload = function(){
+        document.getElementById('close').onclick = function(){
+            this.parentNode.parentNode
+            .removeChild(this.parentNode);
+            return false;
+        };
     };
-};
+</script>
+
+<script type="text/discourse-plugin" version="0.8">
+  // This is the plugin outlet, followed by a custom name for the component
+  api.registerConnectorClass("above-site-header", "notice-banner", {
+
+    // Setting up our component
+    setupComponent(args, component) {
+
+     // Next we're getting the site setting 'top_menu',
+     // splitting the values into an array,
+     // and adding a leading slash
+     var topMenuRoutes = 
+        Discourse.SiteSettings.top_menu.split('|')
+        .map(function(route) {return '/' + route});
+      
+     // The first page listed in the 'top_menu' setting is your homepage
+     // lets assign it to a variable
+     var homeRoute = topMenuRoutes[0];
+  
+     // This calls our code whenever the page changes
+     api.onPageChange((url) => {
+
+        // Check if we're on the homepage 
+        if (url === "/" || url === homeRoute ){ 
+          // If it's the homepage add the 'custom-homepage' class to HTML tag
+          // and set 'displayCustomHomepage' to true
+          document.querySelector("html").classList.add("notice-banner"); 
+          component.set("displayNoticeBanner", true); 
+        } else {  
+          // If we're not on the homepage remove the class
+          // and set `displayCustomHomepage` to false
+          document.querySelector("html").classList.remove("notice-banner"); 
+          component.set("displayNoticeBanner", false); 
+        }
+      });
+    }
+    
+  });
+
+</script>
+
+<script type="text/x-handlebars" data-template-name="/connectors/above-site-header/notice-banner">
+  {{#if displayNoticeBanner}}
+
+        <section class="banner-box wrap">
+
+	<!--ADD A "CLOSE BANNER" BUTTON ON THE TOP RIGHT-->
+	<!--To disable this button, comment the <button> </button> tag-->
+	
+	<button type="button" class="close" id="close">
+             <svg class="fa d-icon d-icon-times svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use xlink:href="#times"></use></svg>
+        </button>
+
+        <div class="container">
+	            <!--SECTION HEADER-->
+	        <div class="section-header ">
+		        <!--TITLE-->
+		        <h2 class="x-title">{{{theme-i18n "notice-banner-title"}}}</h2>
+		            <div class="description"><p>{{{theme-i18n "notice-banner-description"}}}</p>
+		            </div>
+		             <!--BUTTON-->
+           		    <div class="buttons" id="my-button">
+              	    <a href="enter-a-url" class="btn-primary btn-icon-text ember-view"><svg class="fa d-icon d-icon-external-link-alt svg-icon svg-node" aria-hidden="true"><use xlink:href="#external-link-alt"></use></svg> {{{theme-i18n "notice-banner-button"}}}</a>
+                    </div>
+	        </div>
+	        <!--/END SECTION HEADER-->
+	   </div>
+        <!--/END CONTAINER-->
+
+</section>
+
+  {{/if}}
 </script>
