@@ -24,7 +24,7 @@ $background-color: $header_background;
     background-color: $background-color; /* to be sure that even if the image above will not be loaded there will be at least a colored background */
 }
 
-.x-title {
+.N-title {
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 15px;
@@ -38,6 +38,7 @@ $background-color: $header_background;
     padding-right: 15px;
     text-align: left;
     color:$main-color;
+    font-size:$font-up-1;
 }
 
 .banner-box .single-box {
@@ -46,17 +47,14 @@ $background-color: $header_background;
         font-size: 70px;
     }
 }
-
 //TEXT ALIGNMENT INSIDE BUTTONS
-
 #my-button {
     text-align: left;
     padding-bottom: 5px;
     padding-left:15px;
+    font-size:$font-up-1;
 }
-
 //IMAGE SIZE AS ICON SIZE
-
 .responsive-img {
     border-style: none;
     border-width: 1px;
@@ -66,7 +64,6 @@ $background-color: $header_background;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-
 //CLOSE BUTTON ON THE TOP RIGHT
 .banner-box .close {
     border: none;
